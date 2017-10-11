@@ -1,10 +1,9 @@
-<header class="header" id="header"><!--header-start-->
+<header class="header" id="header">
     <div class="container">
         <figure class="logo animated fadeInDown delay-07s">
-            <a href="#"><img src="{{ asset('bundles/app/assets/img/logo.png') }}" alt=""></a>
+            <a><img src="{{ asset('bundles/app/assets/img/logo.png') }}" alt=""></a>
         </figure>
         {% if app.user %}
-            {#{% dump(app.user) %}#}
             <h1 class="animated fadeInDown delay-07s">{{ saluto }} {{ app.user.nome }} {{ app.user.cognome }}</h1>
         {% else %}
             <h1 class="animated fadeInDown delay-07s">Benvenuto</h1>
@@ -14,4 +13,4 @@
         </ul>
         <a class="link animated fadeInUp delay-1s" href="#">Get Started</a>
     </div>
-</header><!--header-end-->
+</header>

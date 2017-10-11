@@ -14,7 +14,6 @@
     <table class="table">
         <thead>
         <tr>
-            {#<th>#</th>#}
             <th>Nome</th>
             <th>Cognome</th>
             <th>Data Registrazione</th>
@@ -22,15 +21,13 @@
             <th>Username</th>
             <th>Email</th>
             <th>Ultimo accesso</th>
-            <th>Modifica</th>
-            <th>Attiva/Disattiva</th>
+            {#<th>Modifica</th>#}
+            <th>Attiva/Disattiva Utenza</th>
         </tr>
         </thead>
         <tbody>
         {% for utenza in utenze %}
-            {#{{ dump(utenza.roles) }}#}
             <tr>
-                {#<th scope="row">{{ utenza.id }}</th>#}
                 <td>{{ utenza.nome }}</td>
                 <td>{{ utenza.cognome }}</td>
                 <td>{{ utenza.dataRegistrazione|date('d-m-Y H:i') }}</td>
@@ -50,15 +47,16 @@
                 {% else %}
                     <td>Nessun accesso</td>
                 {% endif %}
-                <td><a href="modifica">Modifica</a></td>
+                {#<td><a href="modifica">Modifica</a></td>#}
                 {% if utenza.enabled != true %}
-                    <td><a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Attiva</a></td>
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/rosso.png') }}">
+                        <a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Attiva utenza</a></td>
                 {% else %}
-                    <td><a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Disattiva</a></td>
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/verde.png') }}">
+                        <a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Disattiva utenza</a></td>
                 {% endif %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    {#{{ dump(posts) }}#}
 {% endblock %}

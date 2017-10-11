@@ -13,12 +13,13 @@
         {% if post.attivo == 1 %}
             <div class="container-fluid" style="background-color: #f8f9fa">
             <div class="row text-center">
+                <div style="height: 30px"></div>
                 <div class="col-md-12 text-center">
                     <h2>{{ post.titolo }}</h2>
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 text-center container-fluid" style="padding: 0">
                     <img src="{{ post.img }}">
                 </div>
             </div>

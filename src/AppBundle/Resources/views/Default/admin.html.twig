@@ -15,7 +15,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            {#<th>#</th>#}
             <th>Titolo</th>
             <th>Data inizio</th>
             <th>Data Fine</th>
@@ -28,7 +28,7 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <th scope="row">{{ post.id }}</th>
+                {#<th scope="row">{{ post.id }}</th>#}
                 <td>{{ post.titolo }}</td>
                 {% if post.dataInizio is not null %}
                     <td>{{ post.dataInizio|date('d-m-Y H:i') }}</td>
