@@ -1,0 +1,53 @@
+{% extends '@App/base.html.twig' %}
+{% block body %}
+    {% include '@App/templates/adminNav.html.twig' %}
+    <div style="height: 30px"></div>
+    <div class="row text-center">
+        <div class="col-md-12 text-center">
+            <h2>Gestione Post</h2>
+        </div>
+    </div>
+    <div style="height: 30px"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Titolo</th>
+            <th>Data inizio</th>
+            <th>Data Fine</th>
+            <th>Descrizione</th>
+            <th>Attivo</th>
+            <th>Modifica</th>
+            <th>Gestisci</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <th scope="row">{{ post.id }}</th>
+                <td>{{ post.titolo }}</td>
+                {% if post.dataInizio is not null %}
+                    <td>{{ post.dataInizio|date('d-m-Y H:i') }}</td>
+                    <td>{{ post.dataFine|date('d-m-Y H:i') }}</td>
+                {% else %}
+                    <td></td>
+                    <td></td>
+                {% endif %}
+                <td>{{ post.contenuto }}</td>
+                {% if post.attivo == 1 %}
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/verde.png') }}"></td>
+                {% else %}
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/rosso.png') }}"></td>
+                {% endif %}
+                <td><a href="modifica">Modifica</a></td>
+                {% if post.attivo == 0 %}
+                    <td><a href="pippo">Attiva</a></td>
+                {% else %}
+                    <td><a href="pippo">Disattiva</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {#{{ dump(posts) }}#}
+{% endblock %}

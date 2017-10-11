@@ -1,0 +1,36 @@
+.accedi a {
+    color: red!important;
+    cursor: pointer;
+}
+
+.accedi a:hover {
+    color: black!important;
+}
+
+.res-nav_click {
+    color: red;
+}
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #FFFFFF;
+    background-color: red;
+    border-color: red;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: red;
+    border-color: red;
+}

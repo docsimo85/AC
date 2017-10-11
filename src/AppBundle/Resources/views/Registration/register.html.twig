@@ -1,0 +1,124 @@
+{% extends '@App/base.html.twig' %}
+{% block title %}
+    Registrazione
+{% endblock %}
+
+{% block body %}
+    {% include '@App/templates/navigation.html.twig' %}
+
+    <div class="container">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Registrazione</h1>
+                    <hr/>
+                </div>
+            </div>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-danger text-center">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {{ form_start(form) }}
+            <div class="main-login main-center">
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.username, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.email, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Nome</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-address-book fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.nome, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Cognome</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-address-card fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.cognome, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Data di Nascita</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></span>
+                            {{ form_widget(form.dataNascita, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.first, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Conferma Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.second, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Accettazione termini e condizioni</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <p>blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv <a href="termini">Maggiori info</a> </p>
+                            {{ form_widget(form.Accettazione, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrati</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#{{ form_start(form) }}#}
+    {#{{ form_row(form.username) }}#}
+    {#{{ form_row(form.email) }}#}
+    {#{{ form_row(form.plainPassword.first) }}#}
+    {#{{ form_row(form.plainPassword.second) }}#}
+    {#{{ form_row(form.nome) }}#}
+    {#{{ form_row(form.cognome) }}#}
+    {#{{ form_row(form.dataNascita) }}#}
+    {#<button type="submit">Registrati!</button>#}
+    {{ form_end(form) }}
+{% endblock %}
