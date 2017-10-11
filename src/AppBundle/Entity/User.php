@@ -45,13 +45,6 @@ class User extends BaseUser
     private $dataRegistrazione;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="Premium", type="boolean", options={"default":0})
-     */
-    private $premium;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="Data_nascita", type="datetime")
@@ -72,7 +65,6 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->dataRegistrazione = new \DateTime();
-        $this->premium = 0;
         $this->enabled = 1;
         $this->roles = array('ROLE_USER');
     }
@@ -147,30 +139,6 @@ class User extends BaseUser
     public function getDataRegistrazione()
     {
         return $this->dataRegistrazione;
-    }
-
-    /**
-     * Set premium
-     *
-     * @param boolean $premium
-     *
-     * @return User
-     */
-    public function setPremium($premium)
-    {
-        $this->premium = $premium;
-
-        return $this;
-    }
-
-    /**
-     * Get premium
-     *
-     * @return boolean
-     */
-    public function getPremium()
-    {
-        return $this->premium;
     }
 
     /**

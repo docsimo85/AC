@@ -12,46 +12,16 @@
 
     {#controllo se l'utente è premium#}
     {% if app.user and app.user.roles[0] == 'ROLE_USER_PREMIUM' %}
-        Premium
+        <div class="row text-center" style="padding: 20px">
+            <img src="https://wordart.com/static/zinnia-uploads/premium.jpg" style="height: 150px">
+        </div>
     {% endif %}
     <div style="height: 50px"></div>
     <h2>Ultimi post</h2>
 
     {#prendo gli ultimi 2 post e li mostro#}
-    {% for post in posts|slice(0, 2) %}
-        <div class="container-fluid" style="background-color: #f8f9fa">
-            <div class="row text-center">
-                <div class="col-md-12 text-center">
-                    <div style="height: 20px"></div>
-                    <h2 style="font-size: 24px">{{ post.titolo }}</h2>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-12 text-center">
-                    <img src="{{ post.img }}">
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-12 text-center">
-                    <p class="client-part-haead" style="color: black; font-size: 18px">{{ post.contenuto }}</p>
-                </div>
-            </div>
-            {#se ho la dataInizio printo data inizio e data fine#}
-            {% if post.dataInizio is not null %}
-                <div class="row text-center">
-                    <div class="col-md-6 text-center">
-                        <p>Data Inizio</p><h4>{{ post.dataInizio|date('d-m-Y H:i') }}</h4>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <p>Data Fine</p><h4>{{ post.dataFine|date('d-m-Y H:i') }}</h4>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-        <div style="height: 20px"></div>
-        <div class="dropdown-divider"></div>
-        <div style="height: 20px"></div>
-    {% endfor %}
+    {% include '@App/Post/ultimiPost.html.twig' %}
+
     <section class="main-section" id="service"><!--main-section-start-->
         <div class="container">
             <h2>Services</h2>

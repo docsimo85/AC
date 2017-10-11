@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/amministrazione", name="admin")
+     * @Route("/amministrazione/post", name="admin")
      * @Template()
      */
     public function adminAction(Request $request)
@@ -25,7 +25,33 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/amministrazione-utenze", name="admin-utenze")
+     * @Route("/amministrazione/attiva/post/{post}")
+     */
+    public function attivaPostAction(Post $post)
+    {
+        $post->setAttivo(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirectToRoute('admin');
+    }
+
+    /**
+     * @Route("/amministrazione/disattiva/post/{post}")
+     */
+    public function disattivaPostAction(Post $post)
+    {
+        $post->setAttivo(0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirectToRoute('admin');
+    }
+
+    /**
+     * @Route("/amministrazione/utenze", name="admin-utenze")
      * @Template()
      */
     public function utenzeAction(Request $request)
@@ -35,11 +61,37 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/testdb/{user}")
+     * @Route("/amministrazione/attiva/{user}")
      */
-    public function testDbAction(User $user)
+    public function attivaUtenteAction(User $user)
     {
         $user->setEnabled(!$user->isEnabled());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin-utenze');
+    }
+
+    /**
+     * @Route("/amministrazione/attivapremium/{user}")
+     */
+    public function attivaPremiumAction(User $user)
+    {
+        $user->setRoles(array('ROLE_USER_PREMIUM'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin-utenze');
+    }
+
+    /**
+     * @Route("/amministrazione/disattivapremium/{user}")
+     */
+    public function disattivaPremiumAction(User $user)
+    {
+        $user->setRoles(array('ROLE_USER'));
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();

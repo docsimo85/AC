@@ -28,15 +28,20 @@
         </thead>
         <tbody>
         {% for utenza in utenze %}
+            {#{{ dump(utenza.roles) }}#}
             <tr>
                 {#<th scope="row">{{ utenza.id }}</th>#}
                 <td>{{ utenza.nome }}</td>
                 <td>{{ utenza.cognome }}</td>
                 <td>{{ utenza.dataRegistrazione|date('d-m-Y H:i') }}</td>
-                {% if utenza.premium == true %}
-                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/verde.png') }}"></td>
+                {% if utenza.roles[0] == 'ROLE_USER_PREMIUM' %}
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/verde.png') }}">
+                        <a href="{{ path('app_default_disattivapremium', {'user': utenza.id}) }}">Disattiva</a>
+                    </td>
                 {% else %}
-                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/rosso.png') }}"></td>
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/rosso.png') }}">
+                        <a href="{{ path('app_default_attivapremium', {'user': utenza.id}) }}">Attiva</a>
+                    </td>
                 {% endif %}
                 <td>{{ utenza.username }}</td>
                 <td>{{ utenza.email }}</td>
@@ -47,9 +52,9 @@
                 {% endif %}
                 <td><a href="modifica">Modifica</a></td>
                 {% if utenza.enabled != true %}
-                    <td><a href="{{ path('app_default_testdb', {'user': utenza.id}) }}">Attiva</a></td>
+                    <td><a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Attiva</a></td>
                 {% else %}
-                    <td><a href="{{ path('app_default_testdb', {'user': utenza.id}) }}">Disattiva</a></td>
+                    <td><a href="{{ path('app_default_attivautente', {'user': utenza.id}) }}">Disattiva</a></td>
                 {% endif %}
             </tr>
         {% endfor %}

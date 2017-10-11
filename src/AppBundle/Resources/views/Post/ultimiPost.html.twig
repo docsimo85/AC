@@ -1,20 +1,12 @@
-{% extends '@App/base.html.twig' %}
-
-{% block title %}Home{% endblock %}
-
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
-{% block body %}
-    {% include '@App/templates/navigation.html.twig' %}
-    <div style="height: 30px"></div>
-    {% for post in posts %}
+{#prendo gli ultimi 2 post e li mostro#}
+    {% for post in posts|slice(0, 2) %}
+        {#{{ dump(post) }}#}
         {% if post.attivo == 1 %}
             <div class="container-fluid" style="background-color: #f8f9fa">
             <div class="row text-center">
                 <div class="col-md-12 text-center">
-                    <h2>{{ post.titolo }}</h2>
+                    <div style="height: 20px"></div>
+                    <h2 style="font-size: 24px">{{ post.titolo }}</h2>
                 </div>
             </div>
             <div class="row text-center">
@@ -27,6 +19,7 @@
                     <p class="client-part-haead" style="color: black; font-size: 18px">{{ post.contenuto }}</p>
                 </div>
             </div>
+            {#se ho la dataInizio printo data inizio e data fine#}
             {% if post.dataInizio is not null %}
                 <div class="row text-center">
                     <div class="col-md-6 text-center">
@@ -36,12 +29,11 @@
                         <p>Data Fine</p><h4>{{ post.dataFine|date('d-m-Y H:i') }}</h4>
                     </div>
                 </div>
+                <div style="height: 30px"></div>
             {% endif %}
         {% endif %}
         </div>
-        <div style="height: 30px"></div>
+        <div style="height: 20px"></div>
         <div class="dropdown-divider"></div>
-        <div style="height: 30px"></div>
-        {#{{ dump(post.dataInizio|date) }}#}
+        <div style="height: 20px"></div>
     {% endfor %}
-{% endblock %}

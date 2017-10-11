@@ -10,7 +10,7 @@
             {% if app.request.get('_route') == 'homepage' %}
                 {#se l'utenza è loggata mostro il link area riservata#}
                 {% if app.user %}
-                    <li class="accedi"><a href="{{ path('account') }}">Area riservata</a></li>
+                    {#<li class="accedi"><a href="{{ path('account') }}">Area riservata</a></li>#}
                     {#diversamente mostro il tasto accedi#}
                 {% else %}
                     <li class="accedi" data-toggle="modal" data-target="#myModalHorizontal"><a>Accedi</a></li>

@@ -45,9 +45,9 @@
                 {% endif %}
                 <td><a href="modifica">Modifica</a></td>
                 {% if post.attivo == 0 %}
-                    <td><a href="pippo">Attiva</a></td>
+                    <td><a href={{ path('app_default_attivapost', {'post': post.id}) }}>Attiva</a></td>
                 {% else %}
-                    <td><a href="pippo">Disattiva</a></td>
+                    <td><a href={{ path('app_default_disattivapost', {'post': post.id}) }}>Disattiva</a></td>
                 {% endif %}
             </tr>
         {% endfor %}

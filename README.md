@@ -1,4 +1,14 @@
 ac
 ==
 
-A Symfony project created on September 22, 2017, 4:45 pm.
+Tipologie utenze:<br>
+ROLE_USER (viene assegnata standard alla registrazione)<br>
+ROLE_USER_PREMIUM<br>
+ROLE_ADMIN<br>
+<br>
+<br>
+
+
+
+
+
