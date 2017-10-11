@@ -1,0 +1,59 @@
+{% extends '@App/base.html.twig' %}
+{% block title %}
+    Amministrazione utenti
+{% endblock %}
+{% block body %}
+    {% include '@App/templates/adminNav.html.twig' %}
+    <div style="height: 30px"></div>
+    <div class="row text-center">
+        <div class="col-md-12 text-center">
+            <h2>Gestione Utenti</h2>
+        </div>
+    </div>
+    <div style="height: 30px"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            {#<th>#</th>#}
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Data Registrazione</th>
+            <th>Premium</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Ultimo accesso</th>
+            <th>Modifica</th>
+            <th>Attiva/Disattiva</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for utenza in utenze %}
+            <tr>
+                {#<th scope="row">{{ utenza.id }}</th>#}
+                <td>{{ utenza.nome }}</td>
+                <td>{{ utenza.cognome }}</td>
+                <td>{{ utenza.dataRegistrazione|date('d-m-Y H:i') }}</td>
+                {% if utenza.premium == true %}
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/verde.png') }}"></td>
+                {% else %}
+                    <td><img style="width: 25px" src="{{ asset('bundles/app/assets/img/rosso.png') }}"></td>
+                {% endif %}
+                <td>{{ utenza.username }}</td>
+                <td>{{ utenza.email }}</td>
+                {% if utenza.lastLogin is not null %}
+                    <td>{{ utenza.lastLogin|date('d-m-Y H:i') }}</td>
+                {% else %}
+                    <td>Nessun accesso</td>
+                {% endif %}
+                <td><a href="modifica">Modifica</a></td>
+                {% if utenza.enabled != true %}
+                    <td><a href="{{ path('app_default_testdb', {'user': utenza.id}) }}">Attiva</a></td>
+                {% else %}
+                    <td><a href="{{ path('app_default_testdb', {'user': utenza.id}) }}">Disattiva</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {#{{ dump(posts) }}#}
+{% endblock %}

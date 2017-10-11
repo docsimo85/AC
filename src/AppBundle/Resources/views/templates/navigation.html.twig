@@ -19,10 +19,10 @@
             <li><a href="#client">Menu</a></li>
             <li><a href="#team">Menu</a></li>
             <li><a href="#contact">Menu</a></li>
-            {% if app.user and app.user.id==6 %}
+            {% if app.user and app.user.roles[0]=='ROLE_ADMIN' %}
                 <li><a style="color: #3c763d" href="{{ path('admin') }}">Gestione sito</a></li>
                 <li><a href="{{ path('logout') }}">Logout</a></li>
-            {% elseif app.user and app.user.id != 6 %}
+            {% elseif app.user and app.user.roles[0] != 'ROLE_ADMIN' %}
                 <li><a href="{{ path('logout') }}">Logout</a></li>
             {% endif %}
 

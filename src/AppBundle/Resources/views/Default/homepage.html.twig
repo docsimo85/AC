@@ -9,8 +9,15 @@
 {% block body %}
     {% include '@App/templates/navigation.html.twig' %}
     {% include'@App/templates/header.html.twig' %}
+
+    {#controllo se l'utente è premium#}
+    {% if app.user and app.user.roles[0] == 'ROLE_USER_PREMIUM' %}
+        Premium
+    {% endif %}
     <div style="height: 50px"></div>
     <h2>Ultimi post</h2>
+
+    {#prendo gli ultimi 2 post e li mostro#}
     {% for post in posts|slice(0, 2) %}
         <div class="container-fluid" style="background-color: #f8f9fa">
             <div class="row text-center">
@@ -29,6 +36,7 @@
                     <p class="client-part-haead" style="color: black; font-size: 18px">{{ post.contenuto }}</p>
                 </div>
             </div>
+            {#se ho la dataInizio printo data inizio e data fine#}
             {% if post.dataInizio is not null %}
                 <div class="row text-center">
                     <div class="col-md-6 text-center">
@@ -43,8 +51,6 @@
         <div style="height: 20px"></div>
         <div class="dropdown-divider"></div>
         <div style="height: 20px"></div>
-        {#{{ dump(post.dataInizio|date) }}#}
-        {#Serija ck2017#}
     {% endfor %}
     <section class="main-section" id="service"><!--main-section-start-->
         <div class="container">
@@ -406,12 +412,6 @@
                             </div>
                         </div>
 
-                        {#
-                            If you want to control the URL the user
-                            is redirected to on success (more details below)
-                            <input type="hidden" name="_target_path" value="/account" />
-                        #}
-
                         <button class="btn btn-primary btn-lg btn-block login-button" type="submit">Accedi</button>
                         <p class="text-info">Non hai ancora un account? <a class="accedi" data-toggle="modal"
                                                                            href="{{ path('user_registration') }}">Registrati
@@ -459,12 +459,6 @@
                 $('html, body').stop().animate({
                     scrollTop: $($anchor.attr('href')).offset().top - 102
                 }, 1500, 'easeInOutExpo');
-                /*
-                 if you don't want to use the easing effects:
-                 $('html, body').stop().animate({
-                 scrollTop: $($anchor.attr('href')).offset().top
-                 }, 1000);
-                 */
                 event.preventDefault();
             });
         })

@@ -4,7 +4,7 @@
             <a href="#"><img src="{{ asset('bundles/app/assets/img/logo.png') }}" alt=""></a>
         </figure>
         {% if app.user %}
-            {% dump(app.user) %}
+            {#{% dump(app.user) %}#}
             <h1 class="animated fadeInDown delay-07s">{{ saluto }} {{ app.user.nome }} {{ app.user.cognome }}</h1>
         {% else %}
             <h1 class="animated fadeInDown delay-07s">Benvenuto</h1>

@@ -74,6 +74,7 @@ class User extends BaseUser
         $this->dataRegistrazione = new \DateTime();
         $this->premium = 0;
         $this->enabled = 1;
+        $this->roles = array('ROLE_USER');
     }
 
     /**

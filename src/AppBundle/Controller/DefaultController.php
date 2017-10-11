@@ -3,8 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
+use AppBundle\Entity\User;
 use AppBundle\Utils\Service\MessageGenerator;
 use AppBundle\Utils\Service\PostGenerator;
+use AppBundle\Utils\Service\UserList;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +22,29 @@ class DefaultController extends Controller
     {
         $ret = $this->get(PostGenerator::class)->getAll();
         return ['posts'=>$ret];
+    }
+
+    /**
+     * @Route("/amministrazione-utenze", name="admin-utenze")
+     * @Template()
+     */
+    public function utenzeAction(Request $request)
+    {
+        $ret2 = $this->get(UserList::class)->getUser();
+        return ['utenze'=>$ret2];
+    }
+
+    /**
+     * @Route("/testdb/{user}")
+     */
+    public function testDbAction(User $user)
+    {
+        $user->setEnabled(!$user->isEnabled());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('admin-utenze');
     }
 
     /**
