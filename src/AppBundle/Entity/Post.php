@@ -50,6 +50,48 @@ class Post
     private $dataFine;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_inizio_prove", type="datetime", nullable=true)
+     */
+    private $dataInizioProve;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_fine_prove", type="datetime", nullable=true)
+     */
+    private $dataFineProve;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_inizio_qual", type="datetime", nullable=true)
+     */
+    private $dataInizioQual;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_fine_qual", type="datetime", nullable=true)
+     */
+    private $dataFineQual;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_inizio_gara", type="datetime", nullable=true)
+     */
+    private $dataInizioGara;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="giri_gara", type="integer", nullable=false)
+     */
+    private $girigara;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="attivo", type="integer")
@@ -240,6 +282,104 @@ class Post
     {
         $this->img = $img;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataInizioProve()
+    {
+        return $this->dataInizioProve;
+    }
+
+    /**
+     * @param \DateTime $dataInizioProve
+     */
+    public function setDataInizioProve($dataInizioProve)
+    {
+        $this->dataInizioProve = $dataInizioProve;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataFineProve()
+    {
+        return $this->dataFineProve;
+    }
+
+    /**
+     * @param \DateTime $dataFineProve
+     */
+    public function setDataFineProve($dataFineProve)
+    {
+        $this->dataFineProve = $dataFineProve;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataInizioQual()
+    {
+        return $this->dataInizioQual;
+    }
+
+    /**
+     * @param \DateTime $dataInizioQual
+     */
+    public function setDataInizioQual($dataInizioQual)
+    {
+        $this->dataInizioQual = $dataInizioQual;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataFineQual()
+    {
+        return $this->dataFineQual;
+    }
+
+    /**
+     * @param \DateTime $dataFineQual
+     */
+    public function setDataFineQual($dataFineQual)
+    {
+        $this->dataFineQual = $dataFineQual;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDataInizioGara()
+    {
+        return $this->dataInizioGara;
+    }
+
+    /**
+     * @param \DateTime $dataInizioGara
+     */
+    public function setDataInizioGara($dataInizioGara)
+    {
+        $this->dataInizioGara = $dataInizioGara;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGirigara()
+    {
+        return $this->girigara;
+    }
+
+    /**
+     * @param int $girigara
+     */
+    public function setGirigara($girigara)
+    {
+        $this->girigara = $girigara;
+    }
+
+
 
 }
 

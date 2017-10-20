@@ -4,11 +4,11 @@
 {% endblock %}
 {% block body %}
     {% include '@App/templates/adminNav.html.twig' %}
-    {#{{ dump(utenze) }}#}
     <div style="height: 30px"></div>
     <div class="row text-center">
         <div class="col-md-12 text-center">
-            <h2>Gestione Post</h2>
+            <h2>Gestione Eventi</h2>
+            <i class="fa fa-plus" aria-hidden="true"></i><a href="{{ path('app_default_postgenerate') }}"> Crea nuovo</a>
         </div>
     </div>
     <div style="height: 30px"></div>
@@ -53,5 +53,4 @@
         {% endfor %}
         </tbody>
     </table>
-    {#{{ dump(posts) }}#}
 {% endblock %}

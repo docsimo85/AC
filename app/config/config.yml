@@ -36,6 +36,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        upload_directory: '%upload_directory%'
 
 # Doctrine Configuration
 doctrine:

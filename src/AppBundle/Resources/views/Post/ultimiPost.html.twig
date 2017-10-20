@@ -10,9 +10,10 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-12 text-center">
-                    <img src="{{ post.img }}">
+                <div class="col-md-12 text-center container-fluid" style="padding: 0">
+                    <img src="{{ upload_directory }}/{{ post.img }}">
                 </div>
+
             </div>
             <div class="row text-center">
                 <div class="col-md-12 text-center">
@@ -21,14 +22,40 @@
             </div>
             {#se ho la dataInizio printo data inizio e data fine#}
             {% if post.dataInizio is not null %}
-                <div class="row text-center">
-                    <div class="col-md-6 text-center">
-                        <p>Data Inizio</p><h4>{{ post.dataInizio|date('d-m-Y H:i') }}</h4>
+                {% if post.dataInizio is not null %}
+                    <div class="row text-center">
+                        <div class="row">
+                            <div class="col-md-2 text-center">
+                                <p>Data Inizio</p><h4>{{ post.dataInizio|date('d-m-Y H:i') }}</h4>
+                            </div>
+                            <div class="col-md-8"></div>
+                            <div class="col-md-2 text-center">
+                                <p>Data Fine</p><h4>{{ post.dataFine|date('d-m-Y H:i') }}</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="height: 1px; border-bottom: solid #ff000d; border-width: 1px; margin: 10px"></div>
+                            <div class="col-md-2 text-center">
+                                <p>Inizio Prove</p><h4>{{ post.dataInizioProve|date('H:i') }}</h4>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <p>Fine Prove</p><h4>{{ post.dataFineProve|date('H:i') }}</h4>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <p>Inizio Qualifiche</p><h4>{{ post.dataInizioQual|date('H:i') }}</h4>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <p>Fine Qualifiche</p><h4>{{ post.dataFineQual|date('H:i') }}</h4>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <p>Inizio Gara</p><h4>{{ post.dataInizioGara|date('H:i') }}</h4>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <p>Giri di Gara</p><h4>{{ post.girigara }}</h4>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <p>Data Fine</p><h4>{{ post.dataFine|date('d-m-Y H:i') }}</h4>
-                    </div>
-                </div>
+                {% endif %}
                 <div style="height: 30px"></div>
             {% endif %}
         {% endif %}
