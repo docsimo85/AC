@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -52,6 +53,41 @@ class User extends BaseUser
     private $dataNascita;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Piattaforma", type="string", length=255)
+     */
+    private $piattaforma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AltroTeam", type="string", length=255, nullable=true)
+     */
+    private $altroTeam;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="altri_portali", type="string", length=255, nullable=true)
+     */
+    private $altriPortali;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Tempo_dedicato", type="string", length=255)
+     */
+    private $tempoDedicato;
+
+    /**
+     * @var bool
+     * @Assert\IsTrue()
+     * @ORM\Column(name="Periferica_gioco", type="boolean", options={"default":0})
+     */
+    private $perifericaGioco;
+
+    /**
      * @var bool
      * @Assert\IsTrue()
      * @ORM\Column(name="Accettazione", type="boolean", options={"default":0})
@@ -67,6 +103,7 @@ class User extends BaseUser
         $this->dataRegistrazione = new \DateTime();
         $this->enabled = 1;
         $this->roles = array('ROLE_USER');
+        $this->username = $this->nome . ' ' . $this->cognome;
     }
 
     /**
@@ -180,6 +217,87 @@ class User extends BaseUser
     {
         $this->accettazione = $accettazione;
     }
+
+    /**
+     * @return bool
+     */
+    public function isAltroTeam()
+    {
+        return $this->altroTeam;
+    }
+
+    /**
+     * @param bool $altroTeam
+     */
+    public function setAltroTeam($altroTeam)
+    {
+        $this->altroTeam = $altroTeam;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAltriPortali()
+    {
+        return $this->altriPortali;
+    }
+
+    /**
+     * @param string $altriPortali
+     */
+    public function setAltriPortali($altriPortali)
+    {
+        $this->altriPortali = $altriPortali;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPiattaforma()
+    {
+        return $this->piattaforma;
+    }
+
+    /**
+     * @param string $piattaforma
+     */
+    public function setPiattaforma($piattaforma)
+    {
+        $this->piattaforma = $piattaforma;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTempoDedicato()
+    {
+        return $this->tempoDedicato;
+    }
+
+    /**
+     * @param string $tempoDedicato
+     */
+    public function setTempoDedicato($tempoDedicato)
+    {
+        $this->tempoDedicato = $tempoDedicato;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPerifericaGioco()
+    {
+        return $this->perifericaGioco;
+    }
+
+    /**
+     * @param bool $perifericaGioco
+     */
+    public function setPerifericaGioco($perifericaGioco)
+    {
+        $this->perifericaGioco = $perifericaGioco;
+    }
+
 
 
 }

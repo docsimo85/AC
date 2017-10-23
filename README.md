@@ -6,6 +6,8 @@ ROLE_USER (viene assegnata standard alla registrazione)<br>
 ROLE_USER_PREMIUM<br>
 ROLE_ADMIN
 
+Username generato automaticamente (nome + ' ' + cognome)
+
 Utenza esempio admin:<br>
 User: 222<br>
 Pass: 222
@@ -30,4 +32,7 @@ Attivazione e disattivazione premium tramite backend (gestione utenti)<br>
 
 **Ban utenti:<br>
 Tramite pannello gestione utenze (Attiva/Disattiva Utenza)
+
+Homepage:<br>
+Vengono mostrati automaticamente i prossimi 2 eventi.<br>
 

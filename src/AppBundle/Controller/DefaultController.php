@@ -185,4 +185,13 @@ class DefaultController extends Controller
         return ['posts'=>$ret];
     }
 
+    /**
+     * @Route("/regolamento", name="regolamento")
+     * @Template()
+     */
+    public function regolamentoAction(Request $request)
+    {
+        return;
+    }
+
 }

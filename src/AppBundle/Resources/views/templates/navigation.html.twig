@@ -4,7 +4,7 @@
         <ul class="main-nav">
             <li><a href="{{ path('homepage') }}">Home</a></li>
             <li><a href="{{ path('post') }}">Post</a></li>
-            <li><a href="#Portfolio">Menu</a></li>
+            <li><a href="{{ path('regolamento') }}">Regolamento</a></li>
 
             {#se sono nella homepage#}
             {% if app.request.get('_route') == 'homepage' %}

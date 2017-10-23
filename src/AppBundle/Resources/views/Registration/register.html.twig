@@ -10,10 +10,19 @@
         <div class="row main">
             <div class="panel-heading">
                 <div class="panel-title text-center">
-                    <h1 class="title">Registrazione</h1>
+                    <h1 class="title">Unisciti a noi</h1>
                     <hr/>
                 </div>
             </div>
+
+            <div class="container">
+                Compila il seguente modulo d'iscrizione per richiedere la partecipazione alla nostra community.
+                Riceverai entro 24 ore i dati per l'accesso al nostro server di TS3.<br><br>
+                <strong>N.B. Questo non è un portale che organizza eventi e campionati aperti a tutti,
+                    ma una comunità di amici a numero chiuso che non ammette semplici player a scopo ludico.</strong>
+                <hr/>
+            </div>
+
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
                     <div class="alert alert-danger text-center">
@@ -23,15 +32,15 @@
             {% endfor %}
             {{ form_start(form) }}
             <div class="main-login main-center">
-                <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Username</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            {{ form_widget(form.username, { 'attr': {'class':'form-control'}}) }}
-                        </div>
-                    </div>
-                </div>
+                {#<div class="form-group">#}
+                    {#<label for="name" class="cols-sm-2 control-label">Username</label>#}
+                    {#<div class="cols-sm-10">#}
+                        {#<div class="input-group">#}
+                            {#<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>#}
+                            {#{{ form_widget(form.username, { 'attr': {'class':'form-control'}}) }}#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
 
                 <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Email</label>
@@ -94,10 +103,50 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm" class="cols-sm-2 control-label">Accettazione termini e condizioni</label>
+                    <label for="confirm" class="cols-sm-2 control-label">Eventuali iscrizioni ad altri team</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <p>blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv blablalvlalalvalvlavlalv <a href="termini">Maggiori info</a> </p>
+                            <span class="input-group-addon"><i class="fa fa-external-link" aria-hidden="true"></i></span>
+                            {{ form_widget(form.altroTeam, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Eventuali altri portali a cui sei iscritto</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-external-link" aria-hidden="true"></i></span>
+                            {{ form_widget(form.altriPortali, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Frequenza di partecipazione</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-external-link" aria-hidden="true"></i></span>
+                            {{ form_widget(form.tempoDedicato, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Periferica di gioco</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-external-link" aria-hidden="true"></i></span>
+                            {{ form_widget(form.perifericaGioco, { 'attr': {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Dichiarazione obbligatoria</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <p>Dichiaro di voler partecipare attivamente a questa community e di aver letto tutto il <a href="termini">regolamento</a> presente su questo sito internet </p>
                             {{ form_widget(form.Accettazione, { 'attr': {'class':'form-control'}}) }}
                         </div>
                     </div>
@@ -105,7 +154,7 @@
 
 
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrati</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Unisciti a noi</button>
                 </div>
             </div>
         </div>
